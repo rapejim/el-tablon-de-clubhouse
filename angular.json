@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "chrooms": {
+    "el_tablon_de_clubhouse": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,7 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/chrooms",
+            "outputPath": "dist/el_tablon_de_clubhouse",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -91,18 +91,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "chrooms:build"
+            "browserTarget": "el_tablon_de_clubhouse:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "chrooms:build:production"
+              "browserTarget": "el_tablon_de_clubhouse:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chrooms:build"
+            "browserTarget": "el_tablon_de_clubhouse:build"
           }
         },
         "test": {
@@ -139,15 +139,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "chrooms:serve"
+            "devServerTarget": "el_tablon_de_clubhouse:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "chrooms:serve:production"
+              "devServerTarget": "el_tablon_de_clubhouse:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "chrooms"
+  "defaultProject": "el_tablon_de_clubhouse"
 }
