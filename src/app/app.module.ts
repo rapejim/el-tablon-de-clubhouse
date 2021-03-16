@@ -9,6 +9,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { ClubsComponent } from './pages/clubs/clubs.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     FooterComponent,
     ClubsComponent,
     EventsComponent,
-    ContactComponent
+    ContactComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
