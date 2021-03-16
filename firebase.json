@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/el_tablon_de_clubhouse",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+#sticky-footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
+.text-yellow-50 {
+  &:hover,
+  &:focus {
+    color: text-white;
+  }
+}
+
