@@ -1,6 +1,7 @@
 {
   "hosting": [
     {
+      "target": "el-tablon-de-clubhouse",
       "site": "el-tablon-de-clubhouse",
       "public": "dist",
       "ignore": [
@@ -27,6 +28,7 @@
       ]
     },
     {
+      "target": "eltablondeclubhouse",
       "site": "eltablondeclubhouse",
       "public": "dist",
       "ignore": [
