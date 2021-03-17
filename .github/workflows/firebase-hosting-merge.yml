@@ -18,13 +18,15 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EL_TABLON_DE_CLUBHOUSE }}'
           channelId: live
           projectId: el-tablon-de-clubhouse
+          target: el-tablon-de-clubhouse
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ELTABLONDECLUBHOUSE }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EL_TABLON_DE_CLUBHOUSE }}'
           channelId: live
-          projectId: eltablondeclubhouse
+          projectId: el-tablon-de-clubhouse
+          target: eltablondeclubhouse
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
