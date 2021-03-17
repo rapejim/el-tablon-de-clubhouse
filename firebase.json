@@ -2,7 +2,6 @@
   "hosting": [
     {
       "target": "el-tablon-de-clubhouse",
-      "site": "el-tablon-de-clubhouse",
       "public": "dist",
       "ignore": [
         "firebase.json",
@@ -29,7 +28,6 @@
     },
     {
       "target": "eltablondeclubhouse",
-      "site": "eltablondeclubhouse",
       "public": "dist",
       "ignore": [
         "firebase.json",
