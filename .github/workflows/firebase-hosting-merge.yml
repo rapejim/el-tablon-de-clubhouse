@@ -23,7 +23,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EL_TABLON_DE_CLUBHOUSE }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ELTABLONDECLUBHOUSE }}'
           channelId: live
           projectId: eltablondeclubhouse
         env:
