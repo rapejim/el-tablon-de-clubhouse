@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "el-tablon-de-clubhouse"
+    "default": "el-tablon-de-clubhouse",
+    "el-tablon-de-clubhouse": "el-tablon-de-clubhouse",
+    "eltablondeclubhouse": "el-tablon-de-clubhouse"
   }
 }
