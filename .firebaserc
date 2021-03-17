@@ -1,7 +1,17 @@
 {
   "projects": {
-    "default": "el-tablon-de-clubhouse",
-    "el-tablon-de-clubhouse": "el-tablon-de-clubhouse",
-    "eltablondeclubhouse": "eltablondeclubhouse"
+    "default": "el-tablon-de-clubhouse"
+  },
+  "targets": {
+    "el-tablon-de-clubhouse": {
+      "hosting": {
+        "eltablondeclubhouse": [
+          "eltablondeclubhouse"
+        ],
+        "el-tablon-de-clubhouse": [
+          "el-tablon-de-clubhouse"
+        ]
+      }
+    }
   }
 }
