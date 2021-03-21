@@ -17,7 +17,7 @@ export class ClubsService {
     private httpClient: HttpClient,
   ) { }
 
-  getOneClubs( recId: string, params?: SelectParams): Observable<ClubItem>{
+  getOneClub(recId: string, params?: SelectParams): Observable<ClubItem>{
     const url = util.format(GlobalConstants.clubroomsEndpoints.oneClub, recId) + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
       map((res: any) => {
@@ -37,7 +37,7 @@ export class ClubsService {
       }));
   }
 
-  getAllClubsWithProgrammedEvents(){
+  getAllClubsWithProgrammedEvents(): Observable<ClubItem[]>{
     return this.getAllClubs({view: 'ClubsWithEvents'});
   }
 

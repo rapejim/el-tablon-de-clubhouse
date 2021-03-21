@@ -21,16 +21,18 @@ export class EventItem {
   ownerIdList: string[];
   ownerNameList: string[];
   datetimeUTC: Date;
-  language?: string;
+  status: string;
+  profileUrl: string;
 }
 
 export class UserItem {
   id: string;
-  title: string;
-  datetimeUTC: Date;
-  owners: any;
-  description?: string;
-  language?: string;
+  name: string;
+  username: string;
+  bio: string;
+  picture: string;
+  eventIdList: string[];
+  profileUrl: string;
 }
 
 export interface SelectParams {

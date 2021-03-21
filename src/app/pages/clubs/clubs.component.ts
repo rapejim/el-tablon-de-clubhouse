@@ -18,15 +18,17 @@ export class ClubsComponent implements OnInit {
     oneClub: false
   };
 
-  constructor(private clubsService: ClubsService) { }
+  constructor(
+    private clubsService: ClubsService,
+    ) { }
 
   ngOnInit(): void {
   }
 
-  getOneClubs(recId: string){
+  getOneClub(recId: string){
     this.loading.oneClub = true;
     if (recId){
-      this.clubsService.getOneClubs(recId).pipe(
+      this.clubsService.getOneClub(recId).pipe(
         finalize( () => {
           this.loading.oneClub = false;
         })
