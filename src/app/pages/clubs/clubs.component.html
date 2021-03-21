@@ -1,1 +1,106 @@
-<p>clubs works!</p>
+<!-- Cabecera de botones -->
+<div class="row mt-3">
+
+  <!-- Botón para cargar TODOS los clubs -->
+  <div class="col-12 col-sm-6 col-lg-3">
+    <label class="btn d-block btn-success m-2" (click)="getAllClubs()">
+      <div *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading.all"> Todos los Clubs </span>
+    </label>
+  </div>
+
+  <!-- Botón para cargar SOLO los clubs con eventos programados (no finalizados) -->
+  <div class="col-12 col-sm-6 col-lg-3">
+    <label class="btn d-block btn-info m-2" (click)="getAllClubsWithProgrammedEvents()">
+      <div *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading.wEvents"> Clubs con eventos Programados </span>
+    </label>
+  </div>
+
+  <!-- Botón para agregar un club a mano a lista -->
+  <div class="col-12 col-sm-6 col-lg-3">
+    <label class="btn d-block btn-outline-dark m-2" (click)="getOneClubs(clubList[getRandomInt(clubList.length-1)]?.id)">
+      <div *ngIf="loading.oneClub" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading.oneClub"> Duplicar Club al azar de la lista </span>
+    </label>
+  </div>
+
+  <!-- Botón para borrar la lista de clubs -->
+  <div class="col-12 col-sm-6 col-lg-3">
+    <label class="btn d-block btn-outline-danger m-2"
+           [ngClass]="{disabled: (loading.all || loading.oneClub || loading.wEvents)}" (click)="clearClubList()">
+      <span>Limpiar lista</span>
+    </label>
+  </div>
+
+</div>
+
+<!-- Listado de clubs -->
+<div class="row">
+  <div class="col-12 col-sm-6 col-lg-3" *ngFor="let club of clubList; index as i">
+    <div class="card my-2">
+
+      <!-- Nombre del club -->
+      <h5 class="card-header text-center"> {{ club.name }} </h5>
+      <div class="card-body">
+
+        <!-- Logo del club -->
+        <img [src]="club.logoUrl" class="d-block mx-auto" [alt]="club.name"
+             style="border-radius: 35%; max-height: 125px; max-width: 125px;">
+
+        <div class="accordion accordion-flush" [id]="'accordionFlushClub-' + i">
+          <!-- Descripción -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" [id]="'flush-headingDesc-' + i">
+              <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                     [attr.data-bs-target]="'#flush-collapseDesc-' + i" aria-expanded="false"
+                     [attr.aria-controls]="'flush-collapseDesc-' + i">
+                Descripción
+              </label>
+            </h2>
+            <div [id]="'flush-collapseDesc-' + i" class="accordion-collapse collapse"
+                 [attr.aria-labelledby]="'flush-headingDesc-' + i" [attr.data-bs-parent]="'#accordionFlushClub-' + i">
+              <div class="accordion-body">
+                <small class="card-text" style="white-space: pre-wrap"> {{ club.description }} </small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eventos programados -->
+          <div class="accordion-item text-center">
+            <h2 class="accordion-header" [id]="'flush-headingEvents-' + i">
+              <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                     [attr.data-bs-target]="'#flush-collapseEvents-' + i" aria-expanded="false"
+                     [attr.aria-controls]="'flush-collapseEvents-' + i">
+                Eventos programados
+              </label>
+            </h2>
+            <div [id]="'flush-collapseEvents-' + i" class="accordion-collapse collapse"
+                 [attr.aria-labelledby]="'flush-headingEvents-' + i" [attr.data-bs-parent]="'#accordionFlushClub-' + i">
+              <div class="accordion-body">
+                <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
+                  <a *ngFor="let event of club.eventProgrammedList; index as j"
+                     href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
+                    <label class="btn btn-primary m-2"> {{ club.eventProgrammedNameList[j] }} </label>
+                  </a>
+                </span>
+                <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0"><small>No hay eventos programados.</small></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Botón de ir al club -->
+      <div class="card-footer text-center text-muted">
+        <a href="{{ club.profileUrl }}" target="_blank"><label class="btn btn-primary m-2"> Ir al club </label></a>
+      </div>
+    </div>
+  </div>
+</div>
