@@ -3,7 +3,7 @@
 
   <!-- Botón para cargar TODOS los clubs -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-success m-2" (click)="getAllClubs()">
+    <label class="btn d-block btn-primary m-2" (click)="getAllClubs()">
       <div *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
@@ -13,7 +13,7 @@
 
   <!-- Botón para cargar SOLO los clubs con eventos programados (no finalizados) -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-info m-2" (click)="getAllClubsWithProgrammedEvents()">
+    <label class="btn d-block btn-success m-2" (click)="getAllClubsWithProgrammedEvents()">
       <div *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>

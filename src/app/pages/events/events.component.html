@@ -1,1 +1,83 @@
-<p>events works!</p>
+<!-- Cabecera de botones -->
+<div class="row mt-3">
+
+  <!-- Botón para cargar TODOS los events -->
+  <div class="col-12 col-sm-6 col-lg">
+    <label class="btn d-block btn-primary m-2" (click)="getAllEvents()">
+      <div *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading.all"> Todos los Eventos </span>
+    </label>
+  </div>
+
+  <!-- Botón para cargar SOLO los eventos programados (no finalizados) -->
+  <div class="col-12 col-sm-6 col-lg">
+    <label class="btn d-block btn-success m-2" (click)="getAllEventsProgrammed()">
+      <div *ngIf="loading.programmed" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading.programmed"> Eventos no finalizados </span>
+    </label>
+  </div>
+
+  <!-- Botón para borrar la lista de events -->
+  <div class="col-12 col-sm-6 col-lg">
+    <label class="btn d-block btn-outline-danger m-2"
+           [ngClass]="{disabled: (loading.all || loading.oneEvent || loading.programmed)}" (click)="clearEventList()">
+      <span>Limpiar lista</span>
+    </label>
+  </div>
+
+</div>
+
+<!-- Listado de events -->
+<div class="row">
+  <div class="col-12 col-sm-6 col-lg-4" *ngFor="let event of eventList; index as i">
+    <div class="card my-2">
+
+      <!-- Nombre del event -->
+      <h5 class="card-header text-center"> {{ event.title }} </h5>
+      <div class="card-body">
+
+        <div class="row" style="min-height: 100px">
+          <div class="col">
+            <p><em>{{ event.description }}</em></p>
+          </div>
+        </div>
+        <hr>
+
+        <!-- Logo del event -->
+        <div class="row">
+          <div class="col text-center">
+            <img class="mx-1" [src]="picUrl" *ngFor="let picUrl of event.ownerPicUrlList; index as i"
+                 data-bs-toggle="tooltip" data-bs-placement="top" [attr.title]="event.ownerNameList[i]"
+                 [alt]="event.ownerNameList[i]" style="border-radius: 35%; max-height: 50px; max-width: 50px;">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <small class="mx-1">Con
+              <span *ngFor="let ownerName of event.ownerNameList; index as i">
+                {{ ownerName }} {{ (i == event.ownerNameList.length-1)? '' : (i === event.ownerNameList.length-2)? ' y ' : ', ' }}
+              </span>
+            </small>
+          </div>
+        </div>
+        <hr>
+
+        <p [ngClass]="{'text-danger': (event.status === 'Finished'), 'text-success': (event.status === 'Programmed')}"
+           class="text-center fw-bold">{{event.datetimeUTC.toLocaleString( 'es-ES', localeOptions)}}<br>
+          <small class="font-monospace"><em> {{ event.status === 'Finished'? '(Finalizado)' : '' }} </em></small>
+        </p>
+
+      </div>
+
+      <!-- Botón de ir al event -->
+      <div class="card-footer text-center text-muted">
+        <a href="{{ event.profileUrl }}" target="_blank"><label class="btn btn-primary"> Ir al evento </label></a>
+      </div>
+    </div>
+
+  </div>
+</div>

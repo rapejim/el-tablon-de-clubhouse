@@ -20,6 +20,7 @@ export class EventItem {
   clubName: string;
   ownerIdList: string[];
   ownerNameList: string[];
+  ownerPicUrlList: string[];
   datetimeUTC: Date;
   status: string;
   profileUrl: string;
@@ -30,7 +31,7 @@ export class UserItem {
   name: string;
   username: string;
   bio: string;
-  picture: string;
+  pictureUrl: string;
   eventIdList: string[];
   profileUrl: string;
 }
