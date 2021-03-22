@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'clubs', component: ClubsComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: '404', component: Error404Component },
+  { path: 'contact', component: HomeComponent },
+  { path: '404', component: HomeComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
 ];
 
