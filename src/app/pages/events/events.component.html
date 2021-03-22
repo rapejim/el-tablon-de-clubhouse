@@ -68,7 +68,7 @@
 
         <p [ngClass]="{'text-danger': (event.status === 'Finished'), 'text-success': (event.status === 'Programmed')}"
            class="text-center fw-bold">{{event.datetimeUTC.toLocaleString( 'es-ES', localeOptions)}}<br>
-          <small class="font-monospace"><em> {{ event.status === 'Finished'? '(Finalizado)' : '' }} </em></small>
+          <small class="font-monospace"><em> {{ event.status === 'Finished'? '(Finalizado)' : '(Próximamente)' }} </em></small>
         </p>
 
       </div>
