@@ -47,7 +47,7 @@
     <div class="card my-2">
 
       <!-- Nombre del club -->
-      <h5 class="card-header text-center text-capitalize"> {{ club.name.toLowerCase() }} </h5>
+      <h5 class="card-header fw-bold text-center text-capitalize"> {{ club.name.toLowerCase() }} </h5>
       <div class="card-body">
 
         <!-- Logo del club -->
@@ -87,7 +87,7 @@
                 <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
                   <a *ngFor="let event of club.eventProgrammedList; index as j"
                      href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
-                    <label class="btn btn-primary m-2"> {{ club.eventProgrammedNameList[j] }} </label>
+                    <label class="btn btn-primary m-1"> {{ club.eventProgrammedNameList[j] }} </label>
                   </a>
                 </span>
                 <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0"><small>No hay eventos programados.</small></span>
