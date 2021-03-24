@@ -32,8 +32,10 @@ export class EventsService {
       map((res: any[]) => {
         const eventList: EventItem[] = [];
         res.forEach( (item: any) => {
+          item.fields.ownerNameList = item.fields.ownerNameList.split(', ');
+          item.fields.ownerPicUrlList = item.fields.ownerPicUrlList.split(', ');
+          item.fields.datetimeUTC = new Date(item.fields.datetimeUTC);
           const event: EventItem = { ...item.fields } as EventItem;
-          event.datetimeUTC = new Date(event.datetimeUTC);
           eventList.push(event);
         });
         return eventList;

@@ -20,7 +20,9 @@ export class EventItem {
   clubName: string;
   ownerIdList: string[];
   ownerNameList: string[];
+  ownerNameListAuto: string[];
   ownerPicUrlList: string[];
+  ownerPicUrlListAuto: string[];
   datetimeUTC: Date;
   status: string;
   profileUrl: string;
