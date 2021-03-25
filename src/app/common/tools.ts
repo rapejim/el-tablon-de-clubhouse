@@ -1,4 +1,4 @@
-import {SelectParams} from './interfaces';
+import {SelectParams, SortParam} from './interfaces';
 
 export default class Tools {
 
@@ -12,7 +12,32 @@ export default class Tools {
         } else {
           result += '&';
         }
-        result += item[0] + '=' + item[1];
+        switch (item[0]) {
+          case 'fields':
+            const fieldsArray: string[] = item[1];
+            fieldsArray.forEach( (subItem, j) => {
+              result += item[0] + '[]=' + item[1];
+              if (j < fieldsArray.length - 1) { result += '&'; }
+            });
+            break;
+
+          case 'filterByFormula':
+          case 'maxRecords':
+          case 'pageSize':
+          case 'view':
+            result += item[0] + '=' + item[1];
+            break;
+
+          case 'sort':
+            const sortParams: SortParam[] = item[1];
+            sortParams.forEach( (subItem, j) => {
+              result += item[0] + '[' + j + '][direction]=' + subItem.direction;
+              result += '&' + item[0] + '[' + j + '][field]=' + subItem.field;
+              if (j < sortParams.length - 1) { result += '&'; }
+            });
+            break;
+        }
+        result = encodeURI(result);
       });
     }
     return result;

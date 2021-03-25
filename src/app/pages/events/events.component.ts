@@ -27,7 +27,7 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllEvents();
+    this.getAllEventsProgrammed();
   }
 
   getOneEvent(recId: string){

@@ -25,7 +25,7 @@ export class ClubsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllClubs();
+    this.getAllClubsWithProgrammedEvents();
   }
 
   getOneClub(recId: string){

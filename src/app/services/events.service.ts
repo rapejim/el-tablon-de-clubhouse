@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import Tools from '../common/tools';
 import {Observable} from 'rxjs';
-import {EventItem, SelectParams} from '../common/interfaces';
+import {EventItem, SelectParams, SortParam} from '../common/interfaces';
 import {GlobalConstants} from '../common/global-constants';
 import * as util from 'util';
 
@@ -27,6 +27,15 @@ export class EventsService {
   }
 
   getAllEvents( params?: SelectParams): Observable<EventItem[]>{
+    const sortParam: SortParam[] = [
+      {field: 'status', direction: 'desc'},
+      {field: 'datetimeUTC', direction: 'asc'}
+      ];
+    if (params){
+      params.sort = sortParam;
+    } else {
+      params = { sort: sortParam };
+    }
     const url = GlobalConstants.clubroomsEndpoints.allEvents + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
       map((res: any[]) => {
