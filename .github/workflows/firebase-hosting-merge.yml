@@ -10,9 +10,12 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 🏗 Setup CI & Build
+        run: npm ci && npm run build
+      - name: 🚀 Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EL_TABLON_DE_CLUBHOUSE }}'
@@ -30,3 +33,11 @@ jobs:
       #     target: eltablondeclubhouse
       #   env:
       #     FIREBASE_CLI_PREVIEWS: hostingchannels
+      - name: 📩 Telegram notification
+        if: cancelled() == false
+        uses: xinthink/action-telegram@v1.1
+        with:
+          botToken: ${{ secrets.BotToken }}
+          chatId: ${{ secrets.ChatID }}
+          jobStatus: ${{ job.status }}
+          skipSuccess: false
