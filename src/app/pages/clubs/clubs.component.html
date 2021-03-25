@@ -3,39 +3,31 @@
 
   <!-- Botón para cargar TODOS los clubs -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-primary m-2" (click)="getAllClubs()">
-      <div *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
+    <label class="btn d-block m-2" (click)="getAllClubs()"
+           [ngClass]="{'btn-info': (pageState === 'all'), 'btn-outline-info': (pageState != 'all')}">
+      <span *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
-      </div>
-      <span *ngIf="!loading.all"> Todos los Clubs </span>
+      </span>
+      <strong *ngIf="!loading.all"> Todos los Clubs </strong>
     </label>
   </div>
 
   <!-- Botón para cargar SOLO los clubs con eventos programados (no finalizados) -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-success m-2" (click)="getAllClubsWithProgrammedEvents()">
-      <div *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
+    <label class="btn d-block btn-outline-success m-2" (click)="getAllClubsWithProgrammedEvents()"
+           [ngClass]="{'btn-success': (pageState === 'programmed'), 'btn-outline-success': (pageState != 'programmed')}">
+      <span *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
-      </div>
-      <span *ngIf="!loading.wEvents"> Clubs con eventos Programados </span>
+      </span>
+      <strong *ngIf="!loading.wEvents"> Clubs con eventos Programados </strong>
     </label>
   </div>
 
-  <!-- Botón para agregar un club a mano a lista -->
-<!--  <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-outline-dark m-2" (click)="getOneClub(clubList[getRandomInt(clubList.length-1)]?.id)">
-      <div *ngIf="loading.oneClub" class="spinner-border spinner-border-sm" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <span *ngIf="!loading.oneClub"> Duplicar Club al azar de la lista </span>
-    </label>
-  </div>-->
-
   <!-- Botón para borrar la lista de clubs -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-outline-danger m-2"
-           [ngClass]="{disabled: (loading.all || loading.oneClub || loading.wEvents)}" (click)="clearClubList()">
-      <span>Limpiar lista</span>
+    <label class="btn d-block btn-outline-danger m-2" (click)="clearClubList()"
+           [ngClass]="{disabled: (loading.all || loading.oneClub || loading.wEvents)}">
+      <strong>Limpiar lista</strong>
     </label>
   </div>
 

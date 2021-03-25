@@ -3,8 +3,7 @@ import {EventsService} from '../../services/events.service';
 import {finalize} from 'rxjs/operators';
 import Tools from '../../common/tools';
 import {EventItem} from '../../common/interfaces';
-import * as $ from 'jquery';
-// declare var $: any;
+import {PageState} from '../../common/types';
 
 @Component({
   selector: 'app-events',
@@ -15,6 +14,7 @@ export class EventsComponent implements OnInit {
 
   // @ts-ignore
   localeOptions: Intl.DateTimeFormatOptions = { dateStyle: `full`, timeStyle: 'long' };
+  pageState: PageState = 'empty';
   eventList: EventItem[] = [];
   loading = {
     all: false,
@@ -27,6 +27,7 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllEvents();
   }
 
   getOneEvent(recId: string){
@@ -52,6 +53,7 @@ export class EventsComponent implements OnInit {
     this.eventsService.getAllEvents().pipe(
       finalize( () => {
         this.loading.all = false;
+        this.pageState = 'all';
       })
     ).subscribe( (data) => {
       this.eventList = data;
@@ -64,6 +66,7 @@ export class EventsComponent implements OnInit {
     this.eventsService.getAllEventsProgrammed().pipe(
       finalize( () => {
         this.loading.programmed = false;
+        this.pageState = 'programmed';
       })
     ).subscribe( (data) => {
       this.eventList = data;
@@ -73,6 +76,7 @@ export class EventsComponent implements OnInit {
 
   clearEventList() {
     this.eventList = [];
+    this.pageState = 'empty';
   }
 
   getRandomInt(max: number){

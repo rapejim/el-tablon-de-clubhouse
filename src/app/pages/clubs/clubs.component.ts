@@ -3,6 +3,7 @@ import {ClubsService} from '../../services/clubs.service';
 import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
 import Tools from '../../common/tools';
+import {PageState} from '../../common/types';
 
 @Component({
   selector: 'app-clubs',
@@ -11,6 +12,7 @@ import Tools from '../../common/tools';
 })
 export class ClubsComponent implements OnInit {
 
+  pageState: PageState = 'empty';
   clubList: ClubItem[] = [];
   loading = {
     all: false,
@@ -23,6 +25,7 @@ export class ClubsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getAllClubs();
   }
 
   getOneClub(recId: string){
@@ -48,6 +51,7 @@ export class ClubsComponent implements OnInit {
     this.clubsService.getAllClubs().pipe(
       finalize( () => {
         this.loading.all = false;
+        this.pageState = 'all';
       })
     ).subscribe( (data) => {
       this.clubList = data;
@@ -60,6 +64,7 @@ export class ClubsComponent implements OnInit {
     this.clubsService.getAllClubsWithProgrammedEvents().pipe(
       finalize( () => {
         this.loading.wEvents = false;
+        this.pageState = 'programmed';
       })
     ).subscribe( (data) => {
       this.clubList = data;
@@ -69,6 +74,7 @@ export class ClubsComponent implements OnInit {
 
   clearClubList() {
     this.clubList = [];
+    this.pageState = 'empty';
   }
 
   getRandomInt(max: number){

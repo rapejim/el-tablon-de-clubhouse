@@ -3,29 +3,31 @@
 
   <!-- Botón para cargar TODOS los events -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-primary m-2" (click)="getAllEvents()">
-      <div *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
+    <label class="btn d-block m-2" (click)="getAllEvents()"
+           [ngClass]="{'btn-info': (pageState === 'all'), 'btn-outline-info': (pageState != 'all')}">
+      <span *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
-      </div>
-      <span *ngIf="!loading.all"> Todos los Eventos </span>
+      </span>
+      <strong *ngIf="!loading.all"> Todos los Eventos </strong>
     </label>
   </div>
 
   <!-- Botón para cargar SOLO los eventos programados (no finalizados) -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-success m-2" (click)="getAllEventsProgrammed()">
-      <div *ngIf="loading.programmed" class="spinner-border spinner-border-sm" role="status">
+    <label class="btn d-block m-2" (click)="getAllEventsProgrammed()"
+           [ngClass]="{'btn-success': (pageState === 'programmed'), 'btn-outline-success': (pageState != 'programmed')}">
+      <span *ngIf="loading.programmed" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
-      </div>
-      <span *ngIf="!loading.programmed"> Eventos no finalizados </span>
+      </span>
+      <strong *ngIf="!loading.programmed"> Eventos no finalizados </strong>
     </label>
   </div>
 
   <!-- Botón para borrar la lista de events -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-outline-danger m-2"
-           [ngClass]="{disabled: (loading.all || loading.oneEvent || loading.programmed)}" (click)="clearEventList()">
-      <span>Limpiar lista</span>
+    <label class="btn d-block btn-outline-danger m-2" (click)="clearEventList()"
+           [ngClass]="{disabled: (loading.all || loading.oneEvent || loading.programmed)}">
+      <strong>Limpiar lista</strong>
     </label>
   </div>
 
