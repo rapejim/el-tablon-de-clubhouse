@@ -35,7 +35,7 @@
 
 <!-- Listado de clubs -->
 <div class="row">
-  <div class="col-12 col-sm-6 col-lg-3" *ngFor="let club of clubList; index as i">
+  <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let club of clubList; index as i">
     <div class="card my-2">
 
       <!-- Nombre del club -->
@@ -79,7 +79,10 @@
                 <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
                   <a *ngFor="let event of club.eventProgrammedList; index as j"
                      href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
-                    <label class="btn btn-primary m-1"> {{ club.eventProgrammedNameList[j] }} </label>
+                    <button class="btn btn-sm btn-info m-1 w-100">
+                      {{ club.eventProgrammedNameList[j] }} <i class="bi bi-box-arrow-up-right my-auto mx-1"></i>
+                    </button>
+
                   </a>
                 </span>
                 <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0"><small>No hay eventos programados.</small></span>
@@ -89,10 +92,14 @@
 
         </div>
       </div>
+
       <!-- Botón de ir al club -->
       <div class="card-footer text-center text-muted">
-        <a href="{{ club.profileUrl }}" target="_blank"><label class="btn btn-primary m-2"> Ir al club </label></a>
+        <a href="{{ club.profileUrl }}" target="_blank">
+          <button class="btn btn-primary m-2"> Ir al club <i class="bi bi-box-arrow-up-right ps-2"></i></button>
+        </a>
       </div>
+
     </div>
   </div>
 </div>

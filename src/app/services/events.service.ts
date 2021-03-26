@@ -31,11 +31,7 @@ export class EventsService {
       {field: 'status', direction: 'desc'},
       {field: 'datetimeUTC', direction: 'asc'}
       ];
-    if (params){
-      params.sort = sortParam;
-    } else {
-      params = { sort: sortParam };
-    }
+    params ? params.sort = sortParam : params = { sort: sortParam };
     const url = GlobalConstants.clubroomsEndpoints.allEvents + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
       map((res: any[]) => {
