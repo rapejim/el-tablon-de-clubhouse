@@ -8,9 +8,10 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { ClubsComponent } from './pages/clubs/clubs.component';
 import { EventsComponent } from './pages/events/events.component';
+import { ChartComponent } from './pages/chart/chart.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { Error404Component } from './pages/error404/error404.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
     ClubsComponent,
     EventsComponent,
     ContactComponent,
-    Error404Component
+    Error404Component,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
