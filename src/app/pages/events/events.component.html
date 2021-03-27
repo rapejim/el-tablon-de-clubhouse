@@ -3,7 +3,7 @@
 
   <!-- Botón para cargar TODOS los events -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block m-2" (click)="getAllEvents()"
+    <label class="btn d-block bg-gradient m-2" (click)="getAllEvents()"
            [ngClass]="{'btn-info': (pageState === 'all'), 'btn-outline-info': (pageState != 'all')}">
       <span *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -14,7 +14,7 @@
 
   <!-- Botón para cargar SOLO los eventos programados (no finalizados) -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block m-2" (click)="getAllEventsProgrammed()"
+    <label class="btn d-block bg-gradient m-2" (click)="getAllEventsProgrammed()"
            [ngClass]="{'btn-success': (pageState === 'programmed'), 'btn-outline-success': (pageState != 'programmed')}">
       <span *ngIf="loading.programmed" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -80,7 +80,7 @@
       <!-- Botón de ir al event -->
       <div class="card-footer text-center text-muted">
         <a href="{{ event.profileUrl }}" target="_blank">
-          <button class="btn btn-primary m-2"> Ir al evento <i class="bi bi-box-arrow-up-right ps-2"></i></button>
+          <button class="btn btn-primary bg-gradient m-2"> Ir al evento <i class="bi bi-box-arrow-up-right ps-2"></i></button>
         </a>
       </div>
     </div>

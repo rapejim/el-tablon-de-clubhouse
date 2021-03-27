@@ -3,7 +3,7 @@
 
   <!-- Botón para cargar TODOS los clubs -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block m-2" (click)="getAllClubs()"
+    <label class="btn d-block bg-gradient m-2" (click)="getAllClubs()"
            [ngClass]="{'btn-info': (pageState === 'all'), 'btn-outline-info': (pageState != 'all')}">
       <span *ngIf="loading.all" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -14,7 +14,7 @@
 
   <!-- Botón para cargar SOLO los clubs con eventos programados (no finalizados) -->
   <div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-outline-success m-2" (click)="getAllClubsWithProgrammedEvents()"
+    <label class="btn d-block bg-gradient m-2" (click)="getAllClubsWithProgrammedEvents()"
            [ngClass]="{'btn-success': (pageState === 'programmed'), 'btn-outline-success': (pageState != 'programmed')}">
       <span *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -66,11 +66,11 @@
 
           <!-- Eventos programados -->
           <div class="accordion-item text-center">
-            <h2 class="accordion-header" [id]="'flush-headingEvents-' + i">
+            <h2 class="accordion-header " [id]="'flush-headingEvents-' + i">
               <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                      [attr.data-bs-target]="'#flush-collapseEvents-' + i" aria-expanded="false"
                      [attr.aria-controls]="'flush-collapseEvents-' + i">
-                Eventos programados
+                Eventos programados <small *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0" class="badge rounded-pill bg-danger bg-gradient ms-2"> {{club.eventProgrammedList.length}} </small>
               </label>
             </h2>
             <div [id]="'flush-collapseEvents-' + i" class="accordion-collapse collapse"
@@ -79,7 +79,7 @@
                 <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
                   <a *ngFor="let event of club.eventProgrammedList; index as j"
                      href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
-                    <button class="btn btn-sm btn-info m-1 w-100">
+                    <button class="btn btn-sm btn-info bg-gradient m-1 w-100">
                       {{ club.eventProgrammedNameList[j] }} <i class="bi bi-box-arrow-up-right my-auto mx-1"></i>
                     </button>
 
@@ -96,7 +96,7 @@
       <!-- Botón de ir al club -->
       <div class="card-footer text-center text-muted">
         <a href="{{ club.profileUrl }}" target="_blank">
-          <button class="btn btn-primary m-2"> Ir al club <i class="bi bi-box-arrow-up-right ps-2"></i></button>
+          <button class="btn btn-primary bg-gradient m-2"> Ir al club <i class="bi bi-box-arrow-up-right ps-2"></i></button>
         </a>
       </div>
 
