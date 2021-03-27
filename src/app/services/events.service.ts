@@ -40,6 +40,7 @@ export class EventsService {
           item.fields.ownerNameList = item.fields.ownerNameList.split(', ');
           item.fields.ownerPicUrlList = item.fields.ownerPicUrlList.split(', ');
           item.fields.datetimeUTC = new Date(item.fields.datetimeUTC);
+          item.fields.addedDatetime = new Date(item.fields.addedDatetime);
           const event: EventItem = { ...item.fields } as EventItem;
           eventList.push(event);
         });

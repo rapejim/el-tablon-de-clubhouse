@@ -28,6 +28,7 @@ export class EventItem {
   datetimeUTC: Date;
   status: string;
   profileUrl: string;
+  addedDatetime: Date;
 }
 
 export class UserItem {
