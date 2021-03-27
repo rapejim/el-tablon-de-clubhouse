@@ -9,6 +9,8 @@ export interface ClubItem {
   eventIdList?: string[];
   eventProgrammedList?: string[];
   eventProgrammedNameList?: string[];
+  addedDatetime: Date;
+  updatedDatetime: Date;
 }
 
 export class EventItem {

@@ -35,6 +35,8 @@ export class ClubsService {
       map((res: any[]) => {
         const clubList: ClubItem[] = [];
         res.forEach( (item: any) => {
+          item.fields.addedDatetime = new Date(item.fields.addedDatetime);
+          item.fields.updatedDatetime = new Date(item.fields.updatedDatetime);
           clubList.push( { ...item.fields } as ClubItem);
         });
         return clubList;
