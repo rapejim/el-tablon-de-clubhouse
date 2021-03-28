@@ -1,4 +1,4 @@
-<!--<div class="container -lg">-->
+<!--<div class="container-md">-->
   <div class="card my-2">
 
     <!-- Nombre del club -->
@@ -48,9 +48,8 @@
 
                       <div class="btn-group btn-group-vertical m-1 col-12 col-sm-5 col-lg-4 col-xxl-3" role="group" aria-label="Evento">
                         <label class="btn btn-sm btn-outline-primary bg-gradient">
-                          {{ club?.eventProgrammedNameList[i] }} <br>
-                          <span *ngIf="eventList.length > 0">{{ eventList[i]?.datetimeUTC.toLocaleString( 'es-ES', localeOptions) }}</span>
-                          <small class="text-success">miércoles, 31 de marzo de 2021, 16:00:00 CEST</small>
+                          <span class="fw-bold">{{ club?.eventProgrammedNameList[i] }}</span><br>
+                          <small class="text-dark">{{ club?.eventProgrammedDatetimeList[i].toLocaleString( 'es-ES', localeOptions) }}</small>
                         </label>
                         <div class="btn-group btn-group-sm w-100" role="group" aria-label="Botones del evento">
                           <a routerLink="/event/{{ event }}" class="col">

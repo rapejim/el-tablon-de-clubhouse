@@ -8,11 +8,11 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 })
 export class ChartComponent implements OnInit {
 
-  nodeRedUrl = 'https://clubmorning.rapejim.es/#!/0';
-  nodeRedSafeUrl: SafeUrl;
+  readonly iframeUrl = 'https://charts.rapejim.es/#!/1';
+  iframeSafeUrl: SafeUrl;
 
   constructor(private sanitizer: DomSanitizer) {
-    this.nodeRedSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.nodeRedUrl);
+    this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrl);
   }
 
   ngOnInit(): void {

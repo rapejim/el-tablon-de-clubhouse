@@ -10,6 +10,7 @@ export interface ClubItem {
   eventIdList?: string[];
   eventProgrammedList?: string[];
   eventProgrammedNameList?: string[];
+  eventProgrammedDatetimeList?: Date[];
   addedDatetime: Date;
   updatedDatetime: Date;
 }

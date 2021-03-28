@@ -21,6 +21,14 @@ export class ClubsService {
     const url = util.format(GlobalConstants.clubroomsEndpoints.oneClub, recId) + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
       map((res: any) => {
+        const datetimeList: Date[] = [];
+        res.fields.eventProgrammedDatetimeList.forEach( item => {
+          const newDatetime = new Date(item);
+          datetimeList.push(newDatetime);
+        });
+        res.fields.eventProgrammedDatetimeList = datetimeList;
+        res.fields.addedDatetime = new Date(res.fields.addedDatetime);
+        res.fields.updatedDatetime = new Date(res.fields.updatedDatetime);
         return { ...res.fields } as ClubItem;
       }));
   }
