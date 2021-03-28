@@ -12,6 +12,7 @@ import { ChartComponent } from './pages/chart/chart.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClubComponent } from './pages/club/club.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     EventsComponent,
     ContactComponent,
     Error404Component,
-    ChartComponent
+    ChartComponent,
+    ClubComponent
   ],
   imports: [
     BrowserModule,

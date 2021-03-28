@@ -2,6 +2,7 @@ import {SortDirection} from './types';
 
 export interface ClubItem {
   id: string;
+  urlId: string;
   name: string;
   description?: string;
   logoUrl: string;

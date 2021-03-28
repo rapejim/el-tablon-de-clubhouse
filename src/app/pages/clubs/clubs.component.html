@@ -35,16 +35,16 @@
 
 <!-- Listado de clubs -->
 <div class="row">
-  <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let club of clubList; index as i">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3" *ngFor="let club of clubList; index as i">
     <div class="card my-2">
 
       <!-- Nombre del club -->
-      <h5 class="card-header fw-bold text-center text-capitalize"> {{ club.name.toLowerCase() }} </h5>
+      <a routerLink="/club/{{club.id}}" class="text-decoration-none text-muted"><h5 class="card-header fw-bold text-center text-capitalize"> {{ club.name.toLowerCase() }} </h5></a>
       <div class="card-body">
 
         <!-- Logo del club -->
         <img [src]="club.logoUrl" class="d-block mx-auto" [alt]="club.name"
-             style="border-radius: 35%; max-height: 125px; max-width: 125px;">
+             style="border-radius: 35%; max-height: 100px; max-width: 100px;">
 
         <div class="accordion accordion-flush" [id]="'accordionFlushClub-' + i">
           <!-- Descripción -->
@@ -70,7 +70,9 @@
               <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                      [attr.data-bs-target]="'#flush-collapseEvents-' + i" aria-expanded="false"
                      [attr.aria-controls]="'flush-collapseEvents-' + i">
-                Eventos programados <small *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0" class="badge rounded-pill bg-danger bg-gradient ms-2"> {{club.eventProgrammedList.length}} </small>
+                Eventos programados
+                <small *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0"
+                       class="badge rounded-pill bg-danger bg-gradient ms-2"> {{club.eventProgrammedList.length}} </small>
               </label>
             </h2>
             <div [id]="'flush-collapseEvents-' + i" class="accordion-collapse collapse"
@@ -79,13 +81,19 @@
                 <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
                   <a *ngFor="let event of club.eventProgrammedList; index as j"
                      href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
-                    <button class="btn btn-sm btn-info bg-gradient m-1 w-100">
+                    <button class="btn btn-sm btn-info bg-gradient m-1 w-100" *ngIf="j < EVENTS_TO_SHOW">
                       {{ club.eventProgrammedNameList[j] }} <i class="bi bi-box-arrow-up-right my-auto mx-1"></i>
                     </button>
 
                   </a>
+                  <!-- Botón de ver en detalles -->
+                  <a routerLink="/club/{{club.id}}" class="link-info" *ngIf="club.eventProgrammedList.length > EVENTS_TO_SHOW">
+                    <span> Ver todos los eventos... </span>
+                  </a>
                 </span>
-                <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0"><small>No hay eventos programados.</small></span>
+                <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0">
+                  <small>No hay eventos programados.</small>
+                </span>
               </div>
             </div>
           </div>
@@ -93,11 +101,17 @@
         </div>
       </div>
 
-      <!-- Botón de ir al club -->
-      <div class="card-footer text-center text-muted">
-        <a href="{{ club.profileUrl }}" target="_blank">
-          <button class="btn btn-primary bg-gradient m-2"> Ir al club <i class="bi bi-box-arrow-up-right ps-2"></i></button>
-        </a>
+      <!-- Botónes del club -->
+      <div class="card-footer text-center text-muted w-100">
+        <!-- Botón de ir al club -->
+        <div class="btn-group btn-group-sm w-100" role="group" aria-label="Botones del evento">
+          <a routerLink="/club/{{club.id}}" class="col">
+            <label class="btn btn-sm btn-primary bg-gradient m-2"><i class="bi bi-info-circle pe-1"></i> Más info </label>
+          </a>
+          <a href="{{ club.profileUrl }}" target="_blank" class="col">
+            <label class="btn btn-sm btn-primary bg-gradient m-2"> Abrir en la app <i class="bi bi-box-arrow-up-right ps-1"></i></label>
+          </a>
+        </div>
       </div>
 
     </div>

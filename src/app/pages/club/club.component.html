@@ -1,0 +1,86 @@
+<!--<div class="container -lg">-->
+  <div class="card my-2">
+
+    <!-- Nombre del club -->
+    <h5 class="card-header fw-bold text-center text-capitalize"> {{ club?.name.toLowerCase() }} </h5>
+    <div class="card-body">
+
+      <!-- Logo del club -->
+      <img [src]="club?.logoUrl" class="d-block mx-auto" [alt]="club?.name"
+           style="border-radius: 35%; max-height: 125px; max-width: 125px;">
+
+      <div class="accordion accordion-flush" [id]="'accordionFlushClub-' + club?.id">
+        <!-- Descripción -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" [id]="'flush-headingDesc-' + club?.id">
+            <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                   [attr.data-bs-target]="'#flush-collapseDesc-' + club?.id" aria-expanded="false"
+                   [attr.aria-controls]="'flush-collapseDesc-' + club?.id">
+              Descripción
+            </label>
+          </h2>
+          <div [id]="'flush-collapseDesc-' + club?.id" class="accordion-collapse collapse"
+               [attr.aria-labelledby]="'flush-headingDesc-' + club?.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club?.id">
+            <div class="accordion-body text-center">
+              <small class="card-text" style="white-space: pre-wrap"> {{ club?.description }} </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eventos programados -->
+        <div class="accordion-item text-center">
+          <h2 class="accordion-header" [id]="'flush-headingEvents-' + club?.id">
+            <label class="accordion-button" type="button" data-bs-toggle="collapse"
+                   [attr.data-bs-target]="'#flush-collapseEvents-' + club?.id" aria-expanded="true"
+                   [attr.aria-controls]="'flush-collapseEvents-' + club?.id">
+              Eventos programados
+              <small *ngIf="club?.eventProgrammedList && club?.eventProgrammedList.length > 0"
+                     class="badge rounded-pill bg-danger bg-gradient ms-2">
+                {{club?.eventProgrammedList.length}}
+              </small>
+            </label>
+          </h2>
+          <div [id]="'flush-collapseEvents-' + club?.id" class="accordion-collapse collapse show"
+               [attr.aria-labelledby]="'flush-headingEvents-' + club?.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club?.id">
+            <div class="accordion-body">
+                  <div *ngIf="club?.eventProgrammedList && club?.eventProgrammedList.length > 0">
+                    <div *ngFor="let event of club?.eventProgrammedList; index as i" class="d-inline">
+
+                      <div class="btn-group btn-group-vertical m-1 col-12 col-sm-5 col-lg-4 col-xxl-3" role="group" aria-label="Evento">
+                        <label class="btn btn-sm btn-outline-primary bg-gradient">
+                          {{ club?.eventProgrammedNameList[i] }} <br>
+                          <span *ngIf="eventList.length > 0">{{ eventList[i]?.datetimeUTC.toLocaleString( 'es-ES', localeOptions) }}</span>
+                          <small class="text-success">miércoles, 31 de marzo de 2021, 16:00:00 CEST</small>
+                        </label>
+                        <div class="btn-group btn-group-sm w-100" role="group" aria-label="Botones del evento">
+                          <a routerLink="/event/{{ event }}" class="col">
+                            <label class="btn btn-sm btn-primary bg-gradient w-100">
+                              <i class="bi bi-info-circle"></i> Más info
+                            </label>
+                          </a>
+                          <a href="https://ios.joinclubhouse.com/event/{{ event }}" target="_blank" class="col">
+                            <label class="btn btn-sm btn-primary bg-gradient w-100">
+                              <i class="bi bi-box-arrow-up-right"></i> Abrir en la app
+                            </label>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <span *ngIf="!club?.eventProgrammedList || club?.eventProgrammedList.length === 0"><small>No hay eventos programados.</small></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botón de ir al club -->
+    <div class="card-footer text-center text-muted">
+      <a href="{{ club?.profileUrl }}" target="_blank">
+        <button class="btn btn-primary bg-gradient m-2"> Abrir el Club en la App <i class="bi bi-box-arrow-up-right ps-2"></i></button>
+      </a>
+    </div>
+
+  </div>
+<!--</div>-->

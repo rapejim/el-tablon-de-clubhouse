@@ -42,8 +42,13 @@
       <h5 class="card-header text-center"> {{ event.title }} </h5>
       <div class="card-body">
 
+        <!-- Fecha del evento -->
+        <span *ngIf="event.clubName">
+          <p class="text-center fw-bold">{{ event.clubName }} <i class="bi bi-house-fill text-success"></i></p><hr>
+        </span>
+
         <!-- Descripción del evento -->
-        <div class="row" style="min-height: 100px">
+        <div class="row" style="min-height: 75px">
           <div class="col">
             <p *ngIf="event.description != '\n'"><em>{{ event.description }}</em></p>
             <p *ngIf="event.description === '\n'" class="text-center"><em>- Sin descripción -</em></p>
@@ -70,17 +75,21 @@
         </div>
         <hr>
 
-        <p [ngClass]="{'text-danger': (event.status === 'Finished'), 'text-success': (event.status === 'Programmed')}"
-           class="text-center fw-bold">{{event.datetimeUTC.toLocaleString( 'es-ES', localeOptions)}}<br>
-<!--          <small class="font-monospace"><em> {{ event.status === 'Finished'? '(Finalizado)' : '(Próximamente)' }} </em></small>-->
-        </p>
+        <!-- Fecha del evento -->
+        <div class="row">
+          <div class="col text-center">
+            <small [ngClass]="{'text-danger': (event.status === 'Finished'), 'text-success': (event.status === 'Programmed')}"
+               class="fw-bold">{{event.datetimeUTC.toLocaleString( 'es-ES', localeOptions)}}
+            </small>
+          </div>
+        </div>
 
       </div>
 
       <!-- Botón de ir al event -->
       <div class="card-footer text-center text-muted">
         <a href="{{ event.profileUrl }}" target="_blank">
-          <button class="btn btn-primary bg-gradient m-2"> Ir al evento <i class="bi bi-box-arrow-up-right ps-2"></i></button>
+          <button class="btn btn-primary bg-gradient m-2"> Abrir en la app <i class="bi bi-box-arrow-up-right ps-2"></i></button>
         </a>
       </div>
     </div>

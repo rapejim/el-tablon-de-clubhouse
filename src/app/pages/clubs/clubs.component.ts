@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ClubsService} from '../../services/clubs.service';
 import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
-import Tools from '../../common/tools';
 import {PageState} from '../../common/types';
 
 @Component({
@@ -12,6 +11,7 @@ import {PageState} from '../../common/types';
 })
 export class ClubsComponent implements OnInit {
 
+  readonly EVENTS_TO_SHOW = 2;
   pageState: PageState = 'empty';
   clubList: ClubItem[] = [];
   loading = {
@@ -26,24 +26,6 @@ export class ClubsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllClubsWithProgrammedEvents();
-  }
-
-  getOneClub(recId: string){
-    this.loading.oneClub = true;
-    if (recId){
-      this.clubsService.getOneClub(recId).pipe(
-        finalize( () => {
-          this.loading.oneClub = false;
-        })
-      ).subscribe( (data) => {
-        this.clubList.push(data);
-        console.debug('Added one clubs:', this.clubList);
-      });
-    } else {
-      setInterval( () => {
-        this.loading.oneClub = false;
-      }, 400);
-    }
   }
 
   getAllClubs(){
@@ -75,9 +57,5 @@ export class ClubsComponent implements OnInit {
   clearClubList() {
     this.clubList = [];
     this.pageState = 'empty';
-  }
-
-  getRandomInt(max: number){
-    return Tools.getRandomInt(max);
   }
 }

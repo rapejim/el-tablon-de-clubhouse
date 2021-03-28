@@ -79,8 +79,4 @@ export class EventsComponent implements OnInit {
     this.pageState = 'empty';
   }
 
-  getRandomInt(max: number){
-    return Tools.getRandomInt(max);
-  }
-
 }

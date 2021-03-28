@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './pages/home/home.component';
 import {ClubsComponent} from './pages/clubs/clubs.component';
+import {ClubComponent} from './pages/club/club.component';
 import {EventsComponent} from './pages/events/events.component';
 import {ChartComponent} from './pages/chart/chart.component';
 import {ContactComponent} from './pages/contact/contact.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'clubs', component: ClubsComponent },
+  { path: 'club/:urlId', component: ClubComponent },
   { path: 'events', component: EventsComponent },
   { path: 'chart', component: ChartComponent },
   { path: 'contact', component: HomeComponent },
