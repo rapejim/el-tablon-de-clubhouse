@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'clubs', component: ClubsComponent },
   { path: 'club/:urlId', component: ClubComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'chart', component: ChartComponent },
+  { path: 'chart/:chartId', component: ChartComponent },
   { path: 'contact', component: HomeComponent },
   { path: '404', component: HomeComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' },

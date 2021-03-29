@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-chart',
@@ -8,11 +9,23 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 })
 export class ChartComponent implements OnInit {
 
-  readonly iframeUrl = 'https://charts.rapejim.es/#!/1';
+  readonly iframeUrlBase = 'https://charts.rapejim.es/#!/';
   iframeSafeUrl: SafeUrl;
 
-  constructor(private sanitizer: DomSanitizer) {
-    this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrl);
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private sanitizer: DomSanitizer) {
+    const chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
+    switch (chartId) {
+      case '0':
+      case '1':
+        this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrlBase + chartId);
+        break;
+      default:
+        router.navigate(['/404']).then();
+        break;
+    }
   }
 
   ngOnInit(): void {
