@@ -13,6 +13,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClubComponent } from './pages/club/club.component';
+import { EventComponent } from './pages/event/event.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ClubComponent } from './pages/club/club.component';
     ContactComponent,
     Error404Component,
     ChartComponent,
-    ClubComponent
+    ClubComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
