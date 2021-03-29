@@ -33,9 +33,9 @@ export class ClubsService {
       }));
   }
 
-  getAllClubs( params?: SelectParams): Observable<ClubItem[]>{
+  getAllClubs(params?: SelectParams): Observable<ClubItem[]>{
     const sortParam: SortParam[] = [
-      {field: 'name', direction: 'asc'}
+      {field: 'eventProgrammedQty', direction: 'desc'}
     ];
     params ? params.sort = sortParam : params = { sort: sortParam };
     const url = GlobalConstants.clubroomsEndpoints.allClubs + Tools.selectParamsToQueryString(params);
@@ -51,8 +51,9 @@ export class ClubsService {
       }));
   }
 
-  getAllClubsWithProgrammedEvents(): Observable<ClubItem[]>{
-    return this.getAllClubs({view: 'ClubsWithEvents'});
+  getAllClubsWithProgrammedEvents(params?: SelectParams): Observable<ClubItem[]>{
+    params ? params.view = 'ClubsWithEvents' : params = { view: 'ClubsWithEvents' };
+    return this.getAllClubs(params);
   }
 
 }

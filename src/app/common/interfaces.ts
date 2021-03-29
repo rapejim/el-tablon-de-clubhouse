@@ -8,6 +8,7 @@ export interface ClubItem {
   logoUrl: string;
   profileUrl: string;
   eventIdList?: string[];
+  eventProgrammedQty: number;
   eventProgrammedList?: string[];
   eventProgrammedNameList?: string[];
   eventProgrammedDatetimeList?: Date[];

@@ -34,16 +34,16 @@
                    [attr.data-bs-target]="'#flush-collapseEvents-' + club?.id" aria-expanded="true"
                    [attr.aria-controls]="'flush-collapseEvents-' + club?.id">
               Eventos programados
-              <small *ngIf="club?.eventProgrammedList && club?.eventProgrammedList.length > 0"
+              <small *ngIf="club?.eventProgrammedList && club?.eventProgrammedQty > 0"
                      class="badge rounded-pill bg-danger bg-gradient ms-2">
-                {{club?.eventProgrammedList.length}}
+                {{club?.eventProgrammedQty}}
               </small>
             </label>
           </h2>
           <div [id]="'flush-collapseEvents-' + club?.id" class="accordion-collapse collapse show"
                [attr.aria-labelledby]="'flush-headingEvents-' + club?.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club?.id">
             <div class="accordion-body">
-                  <div *ngIf="club?.eventProgrammedList && club?.eventProgrammedList.length > 0">
+                  <div *ngIf="club?.eventProgrammedList && club?.eventProgrammedQty > 0">
                     <div *ngFor="let event of club?.eventProgrammedList; index as i" class="d-inline">
 
                       <div class="btn-group btn-group-vertical m-1 col-12 col-sm-5 col-lg-4 col-xxl-3" role="group" aria-label="Evento">
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                   </div>
-              <span *ngIf="!club?.eventProgrammedList || club?.eventProgrammedList.length === 0"><small>No hay eventos programados.</small></span>
+              <span *ngIf="!club?.eventProgrammedList || club?.eventProgrammedQty === 0"><small>No hay eventos programados.</small></span>
             </div>
           </div>
         </div>

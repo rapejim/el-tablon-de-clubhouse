@@ -71,14 +71,14 @@
                      [attr.data-bs-target]="'#flush-collapseEvents-' + i" aria-expanded="false"
                      [attr.aria-controls]="'flush-collapseEvents-' + i">
                 Eventos programados
-                <small *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0"
-                       class="badge rounded-pill bg-danger bg-gradient ms-2"> {{club.eventProgrammedList.length}} </small>
+                <small *ngIf="club.eventProgrammedList && club.eventProgrammedQty > 0"
+                       class="badge rounded-pill bg-danger bg-gradient ms-2"> {{club.eventProgrammedQty}} </small>
               </label>
             </h2>
             <div [id]="'flush-collapseEvents-' + i" class="accordion-collapse collapse"
                  [attr.aria-labelledby]="'flush-headingEvents-' + i" [attr.data-bs-parent]="'#accordionFlushClub-' + i">
               <div class="accordion-body">
-                <span *ngIf="club.eventProgrammedList && club.eventProgrammedList.length > 0">
+                <span *ngIf="club.eventProgrammedList && club.eventProgrammedQty > 0">
                   <a *ngFor="let event of club.eventProgrammedList; index as j"
                      href="https://www.joinclubhouse.com/event/{{ event }}" target="_blank">
                     <button class="btn btn-sm btn-info bg-gradient m-1 w-100" *ngIf="j < EVENTS_TO_SHOW">
@@ -87,11 +87,11 @@
 
                   </a>
                   <!-- Botón de ver en detalles -->
-                  <a routerLink="/club/{{club.id}}" class="link-info" *ngIf="club.eventProgrammedList.length > EVENTS_TO_SHOW">
+                  <a routerLink="/club/{{club.id}}" class="link-info" *ngIf="club.eventProgrammedQty > EVENTS_TO_SHOW">
                     <span> Ver todos los eventos... </span>
                   </a>
                 </span>
-                <span *ngIf="!club.eventProgrammedList || club.eventProgrammedList.length == 0">
+                <span *ngIf="!club.eventProgrammedList || club.eventProgrammedQty == 0">
                   <small>No hay eventos programados.</small>
                 </span>
               </div>
