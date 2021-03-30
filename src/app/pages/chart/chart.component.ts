@@ -9,13 +9,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ChartComponent implements OnInit {
 
-  readonly iframeUrlBase = 'https://charts.rapejim.es/#!/';
+  readonly iframeUrlBase = 'https://tablonhouse.rapejim.es/#!/';
   iframeSafeUrl: SafeUrl;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer) {
+  }
+
+  ngOnInit(): void {
     const chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
     switch (chartId) {
       case '0':
@@ -23,12 +26,9 @@ export class ChartComponent implements OnInit {
         this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrlBase + chartId);
         break;
       default:
-        router.navigate(['/404']).then();
+        this.router.navigate(['/404']).then();
         break;
     }
-  }
-
-  ngOnInit(): void {
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventsService} from '../../services/events.service';
 import {finalize} from 'rxjs/operators';
-import Tools from '../../common/tools';
 import {EventItem} from '../../common/interfaces';
 import {PageState} from '../../common/types';
 

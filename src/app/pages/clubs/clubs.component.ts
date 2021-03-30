@@ -3,6 +3,7 @@ import {ClubsService} from '../../services/clubs.service';
 import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
 import {PageState} from '../../common/types';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-clubs',
@@ -22,6 +23,7 @@ export class ClubsComponent implements OnInit {
 
   constructor(
     private clubsService: ClubsService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -38,6 +40,11 @@ export class ClubsComponent implements OnInit {
     ).subscribe( (data) => {
       this.clubList = data;
       console.debug('All clubs:', this.clubList);
+    }, err => {
+      console.error('Error buscando los Clubs.');
+      if (err.code === 404){
+        this.router.navigate(['/404']).then();
+      }
     });
   }
 
@@ -51,6 +58,11 @@ export class ClubsComponent implements OnInit {
     ).subscribe( (data) => {
       this.clubList = data;
       console.debug('All clubs with programmed events:', this.clubList);
+    }, err => {
+      console.error('Error buscando los Clubs con eventos programados.');
+      if (err.code === 404){
+        this.router.navigate(['/404']).then();
+      }
     });
   }
 

@@ -1,55 +1,55 @@
 <!--<div class="container-md">-->
-  <div class="card my-2">
+  <div class="card my-2" *ngIf="club">
 
     <!-- Nombre del club -->
-    <h5 class="card-header fw-bold text-center text-capitalize"> {{ club?.name.toLowerCase() }} </h5>
+    <h5 class="card-header fw-bold text-center text-capitalize"> {{ club.name.toLowerCase() }} </h5>
     <div class="card-body">
 
       <!-- Logo del club -->
-      <img [src]="club?.logoUrl" class="d-block mx-auto" [alt]="club?.name"
+      <img [src]="club.logoUrl" class="d-block mx-auto" [alt]="club.name"
            style="border-radius: 35%; max-height: 125px; max-width: 125px;">
 
-      <div class="accordion accordion-flush" [id]="'accordionFlushClub-' + club?.id">
+      <div class="accordion accordion-flush" [id]="'accordionFlushClub-' + club.id">
         <!-- Descripción -->
         <div class="accordion-item">
-          <h2 class="accordion-header" [id]="'flush-headingDesc-' + club?.id">
+          <h2 class="accordion-header" [id]="'flush-headingDesc-' + club.id">
             <label class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                   [attr.data-bs-target]="'#flush-collapseDesc-' + club?.id" aria-expanded="false"
-                   [attr.aria-controls]="'flush-collapseDesc-' + club?.id">
+                   [attr.data-bs-target]="'#flush-collapseDesc-' + club.id" aria-expanded="false"
+                   [attr.aria-controls]="'flush-collapseDesc-' + club.id">
               Descripción
             </label>
           </h2>
-          <div [id]="'flush-collapseDesc-' + club?.id" class="accordion-collapse collapse"
-               [attr.aria-labelledby]="'flush-headingDesc-' + club?.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club?.id">
+          <div [id]="'flush-collapseDesc-' + club.id" class="accordion-collapse collapse"
+               [attr.aria-labelledby]="'flush-headingDesc-' + club.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club.id">
             <div class="accordion-body text-center">
-              <small class="card-text" style="white-space: pre-wrap"> {{ club?.description }} </small>
+              <small class="card-text" style="white-space: pre-wrap"> {{ club.description }} </small>
             </div>
           </div>
         </div>
 
         <!-- Eventos programados -->
         <div class="accordion-item text-center">
-          <h2 class="accordion-header" [id]="'flush-headingEvents-' + club?.id">
+          <h2 class="accordion-header" [id]="'flush-headingEvents-' + club.id">
             <label class="accordion-button" type="button" data-bs-toggle="collapse"
-                   [attr.data-bs-target]="'#flush-collapseEvents-' + club?.id" aria-expanded="true"
-                   [attr.aria-controls]="'flush-collapseEvents-' + club?.id">
+                   [attr.data-bs-target]="'#flush-collapseEvents-' + club.id" aria-expanded="true"
+                   [attr.aria-controls]="'flush-collapseEvents-' + club.id">
               Eventos programados
-              <small *ngIf="club?.eventProgrammedList && club?.eventProgrammedQty > 0"
+              <small *ngIf="club.eventProgrammedList && club.eventProgrammedQty > 0"
                      class="badge rounded-pill bg-danger bg-gradient ms-2">
-                {{club?.eventProgrammedQty}}
+                {{club.eventProgrammedQty}}
               </small>
             </label>
           </h2>
-          <div [id]="'flush-collapseEvents-' + club?.id" class="accordion-collapse collapse show"
-               [attr.aria-labelledby]="'flush-headingEvents-' + club?.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club?.id">
+          <div [id]="'flush-collapseEvents-' + club.id" class="accordion-collapse collapse show"
+               [attr.aria-labelledby]="'flush-headingEvents-' + club.id" [attr.data-bs-parent]="'#accordionFlushClub-' + club.id">
             <div class="accordion-body">
-                  <div *ngIf="club?.eventProgrammedList && club?.eventProgrammedQty > 0">
-                    <div *ngFor="let event of club?.eventProgrammedList; index as i" class="d-inline">
+                  <div *ngIf="club.eventProgrammedList && club.eventProgrammedQty > 0">
+                    <div *ngFor="let event of club.eventProgrammedList; index as i" class="d-inline">
 
                       <div class="btn-group btn-group-vertical m-1 col-12 col-sm-5 col-lg-4 col-xxl-3" role="group" aria-label="Evento">
                         <label class="btn btn-sm btn-outline-primary bg-gradient">
-                          <span class="fw-bold">{{ club?.eventProgrammedNameList[i] }}</span><br>
-                          <small class="text-dark">{{ club?.eventProgrammedDatetimeList[i].toLocaleString( 'es-ES', localeOptions) }}</small>
+                          <span class="fw-bold">{{ club.eventProgrammedNameList[i] }}</span><br>
+                          <small class="text-dark">{{ club.eventProgrammedDatetimeList[i].toLocaleString( 'es-ES', localeOptions) }}</small>
                         </label>
                         <div class="btn-group btn-group-sm w-100" role="group" aria-label="Botones del evento">
                           <a routerLink="/event/{{ event }}" class="col">
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                   </div>
-              <span *ngIf="!club?.eventProgrammedList || club?.eventProgrammedQty === 0"><small>No hay eventos programados.</small></span>
+              <span *ngIf="!club.eventProgrammedList || club.eventProgrammedQty === 0"><small>No hay eventos programados.</small></span>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
 
     <!-- Botón de ir al club -->
     <div class="card-footer text-center text-muted">
-      <a href="{{ club?.profileUrl }}" target="_blank">
+      <a href="{{ club.profileUrl }}" target="_blank">
         <button class="btn btn-primary bg-gradient m-2"> Abrir el Club en la App <i class="bi bi-box-arrow-up-right ps-2"></i></button>
       </a>
     </div>

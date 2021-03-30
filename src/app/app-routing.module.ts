@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'event/:urlId', component: EventComponent },
   { path: 'chart/:chartId', component: ChartComponent },
-  { path: 'contact', component: HomeComponent },
-  { path: '404', component: HomeComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: '404', component: Error404Component },
   { path: '**', redirectTo: '404', pathMatch: 'full' },
 ];
 

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {catchError, map, retry, timeout} from 'rxjs/operators';
 import Tools from '../common/tools';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {EventItem, SelectParams, SortParam} from '../common/interfaces';
 import {GlobalConstants} from '../common/global-constants';
 import * as util from 'util';
@@ -19,11 +19,15 @@ export class EventsService {
   getOneEvent( recId: string, params?: SelectParams): Observable<EventItem>{
     const url = util.format(GlobalConstants.clubroomsEndpoints.oneEvent, recId) + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
+      timeout(3000),
+      retry(0),
       map((res: any) => {
         const event: EventItem = { ...res.fields } as EventItem;
         event.datetimeUTC = new Date(event.datetimeUTC.toString());
         return event;
-      }));
+      }),
+      catchError(this.handleError)
+    );
   }
 
   getAllEvents( params?: SelectParams): Observable<EventItem[]>{
@@ -34,6 +38,8 @@ export class EventsService {
     params ? params.sort = sortParam : params = { sort: sortParam };
     const url = GlobalConstants.clubroomsEndpoints.allEvents + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
+      timeout(3000),
+      retry(0),
       map((res: any[]) => {
         const eventList: EventItem[] = [];
         res.forEach( (item: any) => {
@@ -45,11 +51,18 @@ export class EventsService {
           eventList.push(event);
         });
         return eventList;
-      }));
+      }),
+      catchError(this.handleError)
+    );
   }
 
   getAllEventsProgrammed(): Observable<EventItem[]>{
     return this.getAllEvents({view: 'EventsProgrammed'});
+  }
+
+  handleError(err: any) {
+    // console.error('Error buscando eventos: ', err);
+    return throwError({code: err.status});
   }
 
 }
