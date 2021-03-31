@@ -18,12 +18,6 @@
             }
           ]
         }
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
       ]
     },
     {
@@ -44,7 +38,9 @@
             }
           ]
         }
-      ]
+      ],
+      "appAssociation": "AUTO",
+      "rewrites": [ { "source": "/to/**", "dynamicLinks": true } ]
     },
     {
       "site": "tablonhouse",
