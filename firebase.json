@@ -1,26 +1,6 @@
 {
   "hosting": [
     {
-      "site": "el-tablon-de-clubhouse",
-      "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "headers": [
-        {
-          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public,max-age=31536000,immutable"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "site": "eltablondeclubhouse",
       "public": "dist",
       "ignore": [
@@ -41,26 +21,6 @@
       ],
       "appAssociation": "AUTO",
       "rewrites": [ { "source": "/to/**", "dynamicLinks": true } ]
-    },
-    {
-      "site": "tablonhouse",
-      "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "headers": [
-        {
-          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public,max-age=31536000,immutable"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
