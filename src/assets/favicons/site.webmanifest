@@ -1,0 +1,20 @@
+{
+    "name": "Tabl\u00f3n CH",
+    "short_name": "Tabl\u00f3n CH",
+    "icons": [
+        {
+            "src": "/assets/favicons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ff7069",
+    "background_color": "#ff7069",
+    "start_url": "/",
+    "display": "standalone"
+}
