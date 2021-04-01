@@ -1,7 +1,7 @@
 export class GlobalConstants {
 
-  private static readonly apiBaseUrl = 'https://tablonhouse.rapejim.es';
-  private static readonly clubroomsPath = '/clubsrooms/api/';
+  private static readonly apiBaseUrl = 'https://api.tablon.club';
+  private static readonly clubroomsPath = '/data/';
   private static readonly apiVersion = '1.1';
 
   public static readonly clubroomsEndpoints = {

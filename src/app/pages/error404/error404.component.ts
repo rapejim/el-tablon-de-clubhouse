@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-error404',
@@ -9,15 +9,15 @@ import {Location} from '@angular/common';
 export class Error404Component implements OnInit {
 
   constructor(
-    private location: Location,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
   }
 
 
-  goBack() {
-    this.location.back();
+  goHome() {
+    this.router.navigate(['/']).then();
   }
 
 }

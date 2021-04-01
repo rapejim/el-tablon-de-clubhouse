@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ChartComponent implements OnInit {
 
-  readonly iframeUrlBase = 'https://tablonhouse.rapejim.es/#!/';
+  readonly iframeUrlBase = 'https://api.tablon.club/ui/#!/';
   iframeSafeUrl: SafeUrl;
 
   constructor(
