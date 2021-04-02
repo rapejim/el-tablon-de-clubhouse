@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ClubsService} from '../../services/clubs.service';
 import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
-import {PageState} from '../../common/types';
+import {ClubsPageState} from '../../common/types';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class ClubsComponent implements OnInit {
 
   readonly EVENTS_TO_SHOW = 2;
-  pageState: PageState = 'empty';
+  pageState: ClubsPageState = 'empty';
   clubList: ClubItem[] = [];
   loading = {
     all: false,

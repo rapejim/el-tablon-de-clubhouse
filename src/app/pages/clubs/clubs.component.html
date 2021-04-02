@@ -19,7 +19,7 @@
       <span *ngIf="loading.wEvents" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
       </span>
-      <strong *ngIf="!loading.wEvents"> Clubs con eventos Programados </strong>
+      <strong *ngIf="!loading.wEvents"> Con eventos programados </strong>
     </label>
   </div>
 
@@ -33,8 +33,15 @@
 
 </div>
 
+<div class="row" *ngIf="clubList.length === 0">
+  <div class="col-12 col-sm-6 col-lg-4 text-center">
+    <br>
+    <em>-- No hay Clubs en esta vista --</em>
+  </div>
+</div>
+
 <!-- Listado de clubs -->
-<div class="row">
+<div class="row" *ngIf="clubList.length > 0">
   <div class="col-12 col-sm-6 col-lg-4 col-xxl-3" *ngFor="let club of clubList; index as i">
     <div class="card my-2">
 

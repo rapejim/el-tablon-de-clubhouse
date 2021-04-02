@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventsService} from '../../services/events.service';
 import {finalize} from 'rxjs/operators';
 import {EventItem} from '../../common/interfaces';
-import {PageState} from '../../common/types';
+import {EventsPageState} from '../../common/types';
 
 @Component({
   selector: 'app-events',
@@ -13,11 +13,11 @@ export class EventsComponent implements OnInit {
 
   // @ts-ignore
   localeOptions: Intl.DateTimeFormatOptions = { dateStyle: `full`, timeStyle: 'long' };
-  pageState: PageState = 'empty';
+  pageState: EventsPageState = 'empty';
   eventList: EventItem[] = [];
   loading = {
-    all: false,
-    programmed: false,
+    withoutClub: false,
+    withClub: false,
     oneEvent: false
   };
 
@@ -26,50 +26,32 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllEventsProgrammed();
+    this.getAllEventsProgrammedWithoutClub();
   }
 
-  getOneEvent(recId: string){
-    this.loading.oneEvent = true;
-    if (recId){
-      this.eventsService.getOneEvent(recId).pipe(
-        finalize( () => {
-          this.loading.oneEvent = false;
-        })
-      ).subscribe( (data) => {
-        this.eventList.push(data);
-        console.debug('Added one events:', this.eventList);
-      });
-    } else {
-      setInterval( () => {
-        this.loading.oneEvent = false;
-      }, 400);
-    }
-  }
-
-  getAllEvents(){
-    this.loading.all = true;
-    this.eventsService.getAllEvents().pipe(
+  getAllEventsProgrammedWithClub(){
+    this.loading.withClub = true;
+    this.eventsService.getAllEventsProgrammedWithClub().pipe(
       finalize( () => {
-        this.loading.all = false;
-        this.pageState = 'all';
+        this.loading.withClub = false;
+        this.pageState = 'withClub';
       })
     ).subscribe( (data) => {
       this.eventList = data;
-      console.debug('All events:', this.eventList);
+      console.debug('Events with Club:', this.eventList);
     });
   }
 
-  getAllEventsProgrammed(){
-    this.loading.programmed = true;
-    this.eventsService.getAllEventsProgrammed().pipe(
+  getAllEventsProgrammedWithoutClub(){
+    this.loading.withoutClub = true;
+    this.eventsService.getAllEventsProgrammedWithoutClub().pipe(
       finalize( () => {
-        this.loading.programmed = false;
-        this.pageState = 'programmed';
+        this.loading.withoutClub = false;
+        this.pageState = 'withoutClub';
       })
     ).subscribe( (data) => {
       this.eventList = data;
-      console.debug('All events programmed:', this.eventList);
+      console.debug('Events without Club:', this.eventList);
     });
   }
 

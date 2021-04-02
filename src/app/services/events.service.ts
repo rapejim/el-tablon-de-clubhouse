@@ -56,8 +56,12 @@ export class EventsService {
     );
   }
 
-  getAllEventsProgrammed(): Observable<EventItem[]>{
-    return this.getAllEvents({view: 'EventsProgrammed'});
+  getAllEventsProgrammedWithClub(): Observable<EventItem[]>{
+    return this.getAllEvents({view: 'EventsProgrammedWithClub'});
+  }
+
+  getAllEventsProgrammedWithoutClub(): Observable<EventItem[]>{
+    return this.getAllEvents({view: 'EventsProgrammedWithoutClub'});
   }
 
   handleError(err: any) {

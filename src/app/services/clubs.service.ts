@@ -39,9 +39,13 @@ export class ClubsService {
 
   getAllClubs(params?: SelectParams): Observable<ClubItem[]>{
     const sortParam: SortParam[] = [
-      {field: 'eventProgrammedQty', direction: 'desc'}
+      {field: 'name', direction: 'asc'}
     ];
-    params ? params.sort = sortParam : params = { sort: sortParam };
+    if (!params){
+      params = { sort: sortParam };
+    } else if (!params.sort){
+      params.sort = sortParam;
+    }
     const url = GlobalConstants.clubroomsEndpoints.allClubs + Tools.selectParamsToQueryString(params);
     return this.httpClient.get(url).pipe(
       timeout(3000),
@@ -66,7 +70,9 @@ export class ClubsService {
   }
 
   getAllClubsWithProgrammedEvents(params?: SelectParams): Observable<ClubItem[]>{
+    const sortParam: SortParam[] = [ {field: 'eventProgrammedQty', direction: 'desc'} ];
     params ? params.view = 'ClubsWithEvents' : params = { view: 'ClubsWithEvents' };
+    if (!params.sort){ params.sort = sortParam; }
     return this.getAllClubs(params);
   }
 
