@@ -34,7 +34,7 @@
 </div>
 
 <div class="row" *ngIf="eventList.length === 0">
-    <div class="col-12 col-sm-6 col-lg-4 text-center">
+    <div class="col-12 col-sm-6 col-lg-4 text-center mx-auto">
       <br>
       <em>-- No hay Eventos en esta vista --</em>
     </div>
@@ -57,8 +57,12 @@
         <!-- Descripción del evento -->
         <div class="row" style="min-height: 75px">
           <div class="col">
-            <p *ngIf="event.description != '\n'"><em>{{ event.description }}</em></p>
-            <p *ngIf="event.description === '\n'" class="text-center"><em>- Sin descripción -</em></p>
+            <p *ngIf="event.description && event.description != '\n'" class="text-center" style="white-space: pre-wrap">
+              <em>{{ event.description }}</em>
+            </p>
+            <p *ngIf="!event.description || event.description === '\n'" class="text-center">
+              <em>- Sin descripción -</em>
+            </p>
           </div>
         </div>
         <hr>
