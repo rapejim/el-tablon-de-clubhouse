@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DomSanitizer, SafeUrl, Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-chart',
@@ -15,7 +16,10 @@ export class ChartComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+  ) {
+    this.setDocTitle(this.title);
   }
 
   ngOnInit(): void {
@@ -29,6 +33,10 @@ export class ChartComponent implements OnInit {
         this.router.navigate(['/404']).then();
         break;
     }
+  }
+
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
   }
 
 }

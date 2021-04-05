@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-error404',
@@ -8,13 +10,21 @@ import {Router} from '@angular/router';
 })
 export class Error404Component implements OnInit {
 
+  private readonly title = 'Not Found';
+
   constructor(
     private router: Router,
-    ) { }
+    private titleService: Title,
+    ) {
+    this.setDocTitle(this.title);
+  }
 
   ngOnInit(): void {
   }
 
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
+  }
 
   goHome() {
     this.router.navigate(['/']).then();

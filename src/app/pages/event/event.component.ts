@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-event',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventComponent implements OnInit {
 
-  constructor() { }
+  private readonly title = 'Evento';
+
+  constructor(
+    private eventsService: EventsService,
+    private titleService: Title,
+  ) {
+    this.setDocTitle(this.title);
+  }
 
   ngOnInit(): void {
+  }
+
+
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
   }
 
 }

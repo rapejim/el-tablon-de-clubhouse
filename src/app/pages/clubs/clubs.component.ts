@@ -4,6 +4,8 @@ import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
 import {ClubsPageState} from '../../common/types';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-clubs',
@@ -12,6 +14,7 @@ import {Router} from '@angular/router';
 })
 export class ClubsComponent implements OnInit {
 
+  private readonly title = 'Clubs';
   readonly EVENTS_TO_SHOW = 2;
   pageState: ClubsPageState = 'empty';
   clubList: ClubItem[] = [];
@@ -24,7 +27,10 @@ export class ClubsComponent implements OnInit {
   constructor(
     private clubsService: ClubsService,
     private router: Router,
-    ) { }
+    private titleService: Title,
+    ) {
+    this.setDocTitle(this.title);
+  }
 
   ngOnInit(): void {
     this.getAllClubsWithProgrammedEvents();
@@ -69,5 +75,9 @@ export class ClubsComponent implements OnInit {
   clearClubList() {
     this.clubList = [];
     this.pageState = 'empty';
+  }
+
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
   }
 }

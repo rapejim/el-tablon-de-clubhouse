@@ -3,6 +3,7 @@ export class GlobalConstants {
   private static readonly apiBaseUrl = 'https://api.tablon.club';
   private static readonly clubroomsPath = '/data/';
   private static readonly apiVersion = '1.1';
+  static readonly titleBase = 'El Tablón de Clubhouse';
 
   public static readonly clubroomsEndpoints = {
     allClubs : GlobalConstants.apiBaseUrl + GlobalConstants.clubroomsPath + GlobalConstants.apiVersion + '/clubs/all',

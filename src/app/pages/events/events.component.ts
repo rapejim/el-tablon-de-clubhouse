@@ -3,6 +3,8 @@ import {EventsService} from '../../services/events.service';
 import {finalize} from 'rxjs/operators';
 import {EventItem} from '../../common/interfaces';
 import {EventsPageState} from '../../common/types';
+import {Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-events',
@@ -11,8 +13,10 @@ import {EventsPageState} from '../../common/types';
 })
 export class EventsComponent implements OnInit {
 
+  private readonly title = 'Eventos';
+
   // @ts-ignore
-  localeOptions: Intl.DateTimeFormatOptions = { dateStyle: `full`, timeStyle: 'long' };
+  localeOptions: Intl.DateTimeFormatOptions = { dateStyle: 'full', timeStyle: 'long' };
   pageState: EventsPageState = 'empty';
   eventList: EventItem[] = [];
   loading = {
@@ -23,7 +27,10 @@ export class EventsComponent implements OnInit {
 
   constructor(
     private eventsService: EventsService,
-  ) { }
+    private titleService: Title,
+  ) {
+    this.setDocTitle(this.title);
+  }
 
   ngOnInit(): void {
     this.getAllEventsProgrammedWithoutClub();
@@ -58,6 +65,10 @@ export class EventsComponent implements OnInit {
   clearEventList() {
     this.eventList = [];
     this.pageState = 'empty';
+  }
+
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
   }
 
 }

@@ -3,6 +3,8 @@ import {ClubItem} from '../../common/interfaces';
 import {finalize} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClubsService} from '../../services/clubs.service';
+import {Title} from '@angular/platform-browser';
+import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
   selector: 'app-club',
@@ -11,10 +13,11 @@ import {ClubsService} from '../../services/clubs.service';
 })
 export class ClubComponent implements OnInit {
 
-  readonly recIdRegExp: RegExp = /^rec.{14}/;
+  private readonly title = 'Club';
+  private readonly recIdRegExp: RegExp = /^rec.{14}/;
 
   // @ts-ignore
-  localeOptions: Intl.DateTimeFormatOptions = { dateStyle: `full`, timeStyle: 'long' };
+  localeOptions: Intl.DateTimeFormatOptions = { dateStyle: 'full', timeStyle: 'long' };
   club: ClubItem;
   loading = {
     oneClub: false
@@ -24,7 +27,10 @@ export class ClubComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private clubsService: ClubsService,
-    ) { }
+    private titleService: Title,
+    ) {
+    this.setDocTitle(this.title);
+  }
 
   ngOnInit(): void {
     const urlId = this.activatedRoute.snapshot.paramMap.get('urlId');
@@ -81,6 +87,10 @@ export class ClubComponent implements OnInit {
         this.loading.oneClub = false;
       }, 400);
     }
+  }
+
+  private setDocTitle(title: string){
+    this.titleService.setTitle(GlobalConstants.titleBase + ' - ' + title);
   }
 
 }
