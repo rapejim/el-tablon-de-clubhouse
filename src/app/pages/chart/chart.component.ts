@@ -10,6 +10,8 @@ import {GlobalConstants} from '../../common/global-constants';
 })
 export class ChartComponent implements OnInit {
 
+  private readonly title = 'Gráfica';
+
   readonly iframeUrlBase = 'https://api.tablon.club/ui/#!/';
   iframeSafeUrl: SafeUrl;
 
