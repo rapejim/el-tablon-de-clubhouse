@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventsService} from '../../services/events.service';
 import {Title} from '@angular/platform-browser';
 import {GlobalConstants} from '../../common/global-constants';
 
