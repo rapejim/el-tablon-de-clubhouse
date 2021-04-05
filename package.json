@@ -1,6 +1,6 @@
 {
   "name": "el_tablon_de_clubhouse",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
