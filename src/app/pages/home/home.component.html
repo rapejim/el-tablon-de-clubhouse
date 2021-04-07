@@ -1,26 +1,72 @@
 <div class="container" id="circle-container">
   <div class="row mt-4">
 
-    <!--  Separator column  -->
-    <div class="col-1 col-md-3"></div>
-
-    <!--  Content columns  -->
-    <div class="col text-center">
-      <h5 class="text-body fw-bold">Estamos trabajando duro para tener la web funcional lo antes posible mientras
-        tanto se pueden ir realizando unas pruebas en los menús de Clubs y Eventos con unos poquitos datos que hemos
-        introducido a mano.</h5>
+    <!--  Carousel Club  -->
+    <div id="carouselAddClub" class="carousel slide mb-2 mx-auto" data-bs-ride="carousel" style="max-width: 350px">
+      <h4 class="text-center fw-bold">Agregar un club</h4>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Primer paso"></button>
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="1" aria-label="Segundo paso"></button>
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="2" aria-label="Tercer paso"></button>
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="3" aria-label="Cuarto paso"></button>
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="4" aria-label="Quinto paso"></button>
+        <button type="button" data-bs-target="#carouselAddClub" data-bs-slide-to="5" aria-label="Sexto paso"></button>
+      </div>
+      <div class="carousel-inner bg-secondary p-1 rounded-3">
+        <div class="carousel-item active">
+          <h4 class="text-light text-center fw-bold">Tocar los 3 puntitos</h4>
+          <img src="assets/img/sliders/club/1.png" class="d-block w-100 pb-5" alt="Tocar los 3 puntitos">
+        </div>
+        <div class="carousel-item">
+          <h4 class="text-light text-center fw-bold">Seleccionar Share club...</h4>
+          <img src="assets/img/sliders/club/2.png" class="d-block w-100 pb-5" alt="Seleccionar Share club...">
+        </div>
+        <div class="carousel-item">
+          <h4 class="text-light text-center fw-bold">Seleccionar Telegram</h4>
+          <img src="assets/img/sliders/club/3.png" class="d-block w-100 pb-5" alt="Seleccionar Telegram">
+        </div>
+        <div class="carousel-item">
+          <h4 class="text-light text-center fw-bold">Envíarselo al Bot</h4>
+          <img src="assets/img/sliders/club/4.png" class="d-block w-100 pb-5" alt="Envíarselo el Bot">
+        </div>
+        <div class="carousel-item">
+          <h4 class="text-light text-center fw-bold">El bot lo confirma</h4>
+          <img src="assets/img/sliders/club/5.png" class="d-block w-100 pb-5" alt="El bot lo confirma">
+        </div>
+        <div class="carousel-item">
+          <h4 class="text-light text-center fw-bold">¡¡Y ya está en la web!!</h4>
+          <img src="assets/img/sliders/club/6.png" class="d-block w-100 pb-5" alt="¡¡Y ya está en la web!!">
+        </div>
+      </div>
+      <button class="carousel-control-prev carousel-dark" type="button" data-bs-target="#carouselAddClub" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next carousel-dark" type="button" data-bs-target="#carouselAddClub" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
     </div>
 
-    <!--  Separator column  -->
-    <div class="col-1 col-md-3"></div>
+    <hr class="d-sm-none my-2">
 
-    <div id="loading">
+    <!--  Carousel Event  -->
+    <div id="carouselAddEvent" class="carousel slide mb-2 mx-auto" data-bs-ride="carousel" style="max-width: 350px">
+      <h4 class="text-center fw-bold">Agregar un evento (sala)</h4>
+      <div class="carousel-inner bg-secondary p-1 rounded-3">
+        <div class="carousel-item active">
+          <h6 class="text-light text-center fw-bold">...en breve...</h6>
+        </div>
+      </div>
+    </div>
+
+<!--    <div id="loading">
       <ul class="bokeh">
         <li></li>
         <li></li>
         <li></li>
       </ul>
-    </div>
+    </div>-->
 
   </div>
 </div>
