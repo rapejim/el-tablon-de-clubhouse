@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DomSanitizer, SafeUrl, Title} from '@angular/platform-browser';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
 import {GlobalConstants} from '../../common/global-constants';
 
 @Component({
@@ -8,11 +10,13 @@ import {GlobalConstants} from '../../common/global-constants';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements OnInit, OnDestroy {
 
   private readonly title = 'Gráfica';
 
+  private routerChangesSubscription: Subscription;
   readonly iframeUrlBase = 'https://api.tablon.club/ui/#!/';
+  private chartId = '0';
   iframeSafeUrl: SafeUrl;
 
   constructor(
@@ -21,15 +25,30 @@ export class ChartComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private titleService: Title,
   ) {
-    this.setDocTitle(this.title);
+    this.setDocTitle(this.title + ' ' + this.chartId);
+    this.routerChangesSubscription = this.router.events
+      .pipe( filter(resp => resp instanceof NavigationEnd) )
+      .subscribe (() => {
+        this.chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
+        this.loadChart(this.chartId);
+      });
   }
 
   ngOnInit(): void {
-    const chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
-    switch (chartId) {
+    // this.chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
+    // this.loadChart(this.chartId);
+  }
+
+  ngOnDestroy(): void {
+    this.routerChangesSubscription.unsubscribe();
+  }
+
+  loadChart(id: string){
+    switch (id) {
       case '0':
       case '1':
-        this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrlBase + chartId);
+      case '2':
+        this.iframeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.iframeUrlBase + id);
         break;
       default:
         this.router.navigate(['/404']).then();
