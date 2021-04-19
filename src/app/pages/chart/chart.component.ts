@@ -10,7 +10,7 @@ import {GlobalConstants} from '../../common/global-constants';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit, OnDestroy {
+export class ChartComponent implements OnDestroy {
 
   private readonly title = 'Gráfica';
 
@@ -32,11 +32,6 @@ export class ChartComponent implements OnInit, OnDestroy {
         this.chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
         this.loadChart(this.chartId);
       });
-  }
-
-  ngOnInit(): void {
-    // this.chartId = this.activatedRoute.snapshot.paramMap.get('chartId');
-    // this.loadChart(this.chartId);
   }
 
   ngOnDestroy(): void {
