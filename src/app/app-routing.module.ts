@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './pages/home/home.component';
+import {CalendarComponent} from './pages/calendar/calendar.component';
 import {ChartComponent} from './pages/chart/chart.component';
 import {ClubsComponent} from './pages/clubs/clubs.component';
 import {ClubComponent} from './pages/club/club.component';
@@ -13,6 +14,7 @@ import {Error404Component} from './pages/error404/error404.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'calendar/:calendarId', component: CalendarComponent },
   { path: 'chart/:chartId', component: ChartComponent },
   { path: 'ch/:chartId', component: ChartComponent },
   { path: 'clubs', component: ClubsComponent },

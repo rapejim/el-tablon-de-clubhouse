@@ -14,6 +14,7 @@ export interface ClubItem {
   eventProgrammedDatetimeList?: Date[];
   addedDatetime: Date;
   updatedDatetime: Date;
+  calendarId: string;
 }
 
 export class EventItem {
