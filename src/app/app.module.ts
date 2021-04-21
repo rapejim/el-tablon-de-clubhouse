@@ -28,7 +28,7 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
     Error404Component,
     ChartComponent,
     ClubComponent,
-    EventComponent
+    EventComponent,
     CalendarComponent,
   ],
   imports: [
