@@ -17,7 +17,7 @@ export class CalendarComponent implements OnInit {
   private routerChangesSubscription: Subscription;
   readonly iframeUrlBase = 'https://airtable.com/embed/';
   private iframeId = '';
-  readonly queryParams = '?mode=threeDay';
+  readonly queryParams = '?mode=week';
   iframeSafeUrl: SafeUrl;
 
   constructor(
