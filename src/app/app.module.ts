@@ -34,7 +34,6 @@ import { EventFilterPipe } from './pipes/event-filter.pipe';
     ClubComponent,
     EventComponent,
     CalendarComponent,
-    FaqComponent,
     ClubFilterPipe,
     EventFilterPipe
   ],
