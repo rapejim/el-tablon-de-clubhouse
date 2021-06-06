@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {EventsService} from '../../services/events.service';
-import {finalize} from 'rxjs/operators';
+import {debounceTime, finalize} from 'rxjs/operators';
 import {EventItem} from '../../common/interfaces';
 import {EventsPageState} from '../../common/types';
 import {Title} from '@angular/platform-browser';
 import {GlobalConstants} from '../../common/global-constants';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-events',
@@ -25,6 +26,9 @@ export class EventsComponent implements OnInit {
     oneEvent: false
   };
 
+  filterInput: FormControl = new FormControl('');
+  filterText: string;
+
   constructor(
     private eventsService: EventsService,
     private titleService: Title,
@@ -34,6 +38,9 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllEventsProgrammedWithoutClub();
+    this.filterInput.valueChanges.pipe(
+      debounceTime(300)
+    ).subscribe( value => this.filterText = value);
   }
 
   getAllEventsProgrammedWithClub(){

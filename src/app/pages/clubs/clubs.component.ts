@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ClubsService} from '../../services/clubs.service';
 import {ClubItem} from '../../common/interfaces';
-import {finalize} from 'rxjs/operators';
+import {debounceTime, finalize} from 'rxjs/operators';
 import {ClubsPageState} from '../../common/types';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {GlobalConstants} from '../../common/global-constants';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-clubs',
@@ -24,6 +25,9 @@ export class ClubsComponent implements OnInit {
     oneClub: false
   };
 
+  filterInput: FormControl = new FormControl('');
+  filterText: string;
+
   constructor(
     private clubsService: ClubsService,
     private router: Router,
@@ -34,6 +38,9 @@ export class ClubsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllClubsWithProgrammedEvents();
+    this.filterInput.valueChanges.pipe(
+      debounceTime(300)
+    ).subscribe( value => this.filterText = value);
   }
 
   getAllClubs(){

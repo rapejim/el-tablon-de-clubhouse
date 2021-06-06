@@ -24,11 +24,16 @@
   </div>
 
   <!-- Botón para borrar la lista de events -->
-  <div class="col-12 col-sm-6 col-lg">
+  <!--<div class="col-12 col-sm-6 col-lg">
     <label class="btn d-block btn-outline-danger m-2" (click)="clearEventList()"
            [ngClass]="{disabled: (loading.withoutClub || loading.oneEvent || loading.withClub)}">
       <strong>Limpiar lista</strong>
     </label>
+  </div>-->
+
+  <!-- Cuadro de texto de búsqueda de clubs -->
+  <div class="col-12 col-sm-6 col-lg my-auto">
+    <input [formControl]="filterInput" type="text" class="form-control" placeholder="Búsqueda por nombre" aria-label="Búsqueda por nombre">
   </div>
 
 </div>
@@ -42,7 +47,7 @@
 
 <!-- Listado de events -->
 <div class="row" *ngIf="eventList.length > 0">
-  <div class="col-12 col-sm-6 col-lg-4" *ngFor="let event of eventList; index as i">
+  <div class="col-12 col-sm-6 col-lg-4" *ngFor="let event of eventList | eventFilter:filterText; index as i">
     <div class="card my-2">
 
       <!-- Nombre del evento -->
