@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClubComponent } from './pages/club/club.component';
 import { EventComponent } from './pages/event/event.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { FaqComponent } from './pages/faq/faq.component';
+// import { FaqComponent } from './pages/faq/faq.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClubFilterPipe } from './pipes/club-filter.pipe';
 import { EventFilterPipe } from './pipes/event-filter.pipe';
@@ -34,6 +34,7 @@ import { EventFilterPipe } from './pipes/event-filter.pipe';
     ClubComponent,
     EventComponent,
     CalendarComponent,
+    // FaqComponent,
     ClubFilterPipe,
     EventFilterPipe
   ],
