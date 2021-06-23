@@ -23,14 +23,6 @@
     </label>
   </div>
 
-  <!-- Botón para borrar la lista de events -->
-  <!--<div class="col-12 col-sm-6 col-lg">
-    <label class="btn d-block btn-outline-danger m-2" (click)="clearEventList()"
-           [ngClass]="{disabled: (loading.withoutClub || loading.oneEvent || loading.withClub)}">
-      <strong>Limpiar lista</strong>
-    </label>
-  </div>-->
-
   <!-- Cuadro de texto de búsqueda de clubs -->
   <div class="col-12 col-sm-6 col-lg my-auto">
     <input [formControl]="filterInput" type="text" class="form-control" placeholder="Búsqueda por nombre" aria-label="Búsqueda por nombre">
@@ -104,7 +96,7 @@
 
       <!-- Botón de ir al event -->
       <div class="card-footer text-center text-muted">
-        <a href="{{ event.profileUrl }}" target="_blank">
+        <a href="{{ event.profileUrl }}" target="_blank" rel=”noopener noreferrer”>
           <button class="btn btn-primary bg-gradient m-2"> Abrir en la app <i class="bi bi-box-arrow-up-right ps-2"></i></button>
         </a>
       </div>

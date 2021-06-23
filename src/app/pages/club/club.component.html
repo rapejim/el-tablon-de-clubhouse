@@ -57,7 +57,7 @@
                               <i class="bi bi-info-circle"></i> Más info
                             </label>
                           </a>
-                          <a href="https://ios.joinclubhouse.com/event/{{ event }}" target="_blank" class="col">
+                          <a class="col" href="https://ios.joinclubhouse.com/event/{{ event }}" target="_blank" rel=”noopener noreferrer”>
                             <label class="btn btn-sm btn-primary bg-gradient w-100">
                               Abrir en la app <i class="bi bi-box-arrow-up-right"></i>
                             </label>
@@ -79,7 +79,7 @@
       <a routerLink="/calendar/{{club.calendarId}}" *ngIf="club.calendarId">
         <button class="btn btn-primary bg-gradient m-2"><i class="bi bi-calendar3 pe-2"></i> Ir al calendario del Club</button>
       </a>
-      <a href="{{ club.profileUrl }}" target="_blank">
+      <a href="{{ club.profileUrl }}" target="_blank" rel=”noopener noreferrer”>
         <button class="btn btn-primary bg-gradient m-2"> Abrir el Club en la App <i class="bi bi-box-arrow-up-right ps-2"></i></button>
       </a>
     </div>
